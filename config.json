@@ -1,27 +1,3 @@
-import requests
-
-def send_telegram_message(bot_token, chat_id, message):
-    url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-    payload = {
-        "chat_id": chat_id,
-        "text": message
-    }
-
-    response = requests.post(url, json=payload)
-    if response.status_code == 200:
-        print("Message sent successfully")
-    else:
-        print(f"Failed to send message. Status code: {response.status_code}")
-        print(response.text)
-
-# Example usage
-bot_token = "6716886799:AAFI4hb_7dGEm7VHUjoCmtWYyTfwEwyQYbU"
-chat_id = "6459362"
-message = "Hello, world!"
-
-send_telegram_message(bot_token, chat_id, message)
-
-
 {
     "TOKEN": "6716886799:AAFI4hb_7dGEm7VHUjoCmtWYyTfwEwyQYbU",
     "ID": "6459362",
