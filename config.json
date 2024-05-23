@@ -1,3 +1,34 @@
+const axios = require('axios');
+
+function sendTelegramMessage(botToken, chatId, message) {
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    const payload = {
+        chat_id: chatId,
+        text: message
+    };
+
+    axios.post(url, payload)
+        .then(response => {
+            console.log("Message sent successfully");
+        })
+        .catch(error => {
+            console.error("Failed to send message:");
+            if (error.response) {
+                console.error("Status code:", error.response.status);
+                console.error("Error details:", error.response.data);
+            } else {
+                console.error("Error:", error.message);
+            }
+        });
+}
+
+// Example usage
+const botToken = "6716886799:AAFI4hb_7dGEm7VHUjoCmtWYyTfwEwyQYbU";
+const chatId = "6459362";
+const message = "Hello, world!";
+
+sendTelegramMessage(botToken, chatId, message);
+
 {
     "TOKEN": "6716886799:AAFI4hb_7dGEm7VHUjoCmtWYyTfwEwyQYbU",
     "ID": "6459362",
